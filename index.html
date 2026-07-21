@@ -9,6 +9,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face{
+    font-family:'Margest Semibold';
+    src:url('fonts/Margest-Semibold.otf') format('opentype');
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Margest Light';
+    src:url('fonts/Margest-Light.otf') format('opentype');
+    font-display:swap;
+  }
   :root{
     --navy:#0F0F0F;
     --gold:#D4A93D;      /* decorative only — never white text on this */
@@ -64,19 +74,20 @@
     border-bottom:1px solid rgba(212,169,61,0.25);
   }
   .hero .eyebrow{
-    font-family:'Inter',sans-serif;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:0.1em;
+    font-family:'Margest Light', sans-serif;
+    font-size:15px;
+    font-weight:400;
+    letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--gold);
     margin-bottom:32px;
     padding-inline:8px;
   }
   .hero .big-num{
+    font-family:'Margest Semibold','Bebas Neue',sans-serif;
     font-size:140px;
-    line-height:0.85;
-    color:var(--gold);
+    line-height:0.92;
+    color:var(--red);
   }
   .hero h1{
     font-size:32px;
@@ -137,20 +148,20 @@
     .story .grid{grid-template-columns:1fr 1fr; gap:80px;}
   }
   .story .num{
-    font-family:'Bebas Neue',sans-serif;
+    font-family:'Margest Semibold','Bebas Neue',sans-serif;
     font-size:180px;
-    line-height:0.85;
+    line-height:0.92;
     color:var(--red);
   }
   .story .num span{
     display:block;
-    font-family:'Inter',sans-serif;
-    font-size:14px;
-    font-weight:600;
-    letter-spacing:0.1em;
+    font-family:'Margest Light',sans-serif;
+    font-size:16px;
+    font-weight:400;
+    letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--navy);
-    opacity:0.6;
+    opacity:0.7;
     margin-top:12px;
   }
   .story h2{font-size:32px; margin-bottom:20px; color:var(--navy);}
@@ -162,7 +173,8 @@
   /* ---------- THE DEAL ---------- */
   .deal{background:var(--navy);}
   .deal .kicker{
-    font-size:12px; font-weight:600; letter-spacing:0.18em;
+    font-family:'Margest Light',sans-serif;
+    font-size:15px; font-weight:400; letter-spacing:0.14em;
     text-transform:uppercase; color:var(--gold); margin-bottom:16px;
   }
   .deal h2{font-size:32px; color:var(--cream); margin-bottom:48px; max-width:16ch;}
@@ -176,9 +188,10 @@
   }
   .deal-list li:last-child{border-bottom:1px solid rgba(247,243,234,0.12);}
   .deal-list .n{
-    font-family:'Bebas Neue',sans-serif;
+    font-family:'Margest Semibold','Bebas Neue',sans-serif;
     font-size:32px;
-    color:var(--gold);
+    line-height:0.92;
+    color:var(--red);
     flex-shrink:0;
     width:1.4em;
   }
