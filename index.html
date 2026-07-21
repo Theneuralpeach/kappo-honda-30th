@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kappo Honda — 30th Anniversary Creator Invite</title>
+<meta name="description" content="Kappo Honda turns 30 this year. We're inviting a handful of Orange County food creators to celebrate with us.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F0F0F;
+    --gold:#D4A93D;      /* decorative only — never white text on this */
+    --red:#C04A35;       /* CTA-safe — 4.9:1 vs white, confirmed */
+    --cream:#F7F3EA;
+    --muted:#9C9C93;
+
+    --margin-desktop:120px;
+    --margin-mobile:20px;
+    --content-max:1200px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy);
+    color:var(--cream);
+    font-family:'Inter', -apple-system, sans-serif;
+    font-size:18px;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Bebas Neue', 'Inter', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+
+  .wrap{
+    max-width:var(--content-max);
+    margin:0 auto;
+    padding-inline:var(--margin-mobile);
+  }
+  @media (min-width:1200px){
+    .wrap{padding-inline:var(--margin-desktop);}
+  }
+
+  section{padding-block:80px;}
+  @media (min-width:1200px){
+    section{padding-block:120px;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-block:100px 80px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(212,169,61,0.10), transparent 55%),
+      var(--navy);
+    border-bottom:1px solid rgba(212,169,61,0.25);
+  }
+  .hero .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:32px;
+    padding-inline:8px;
+  }
+  .hero .big-num{
+    font-size:140px;
+    line-height:0.85;
+    color:var(--gold);
+  }
+  .hero h1{
+    font-size:32px;
+    color:var(--cream);
+    max-width:16ch;
+    margin:20px auto 0;
+    text-transform:none;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    letter-spacing:0;
+    line-height:1.25;
+  }
+  .hero .lead{
+    margin-top:24px;
+    font-size:18px;
+    color:var(--cream);
+    opacity:0.85;
+    max-width:30em;
+    margin-inline:auto;
+  }
+  .hero .cta-row{margin-top:40px;}
+  @media (min-width:1200px){
+    .hero .big-num{font-size:220px;}
+    .hero h1{font-size:40px; max-width:18ch;}
+    .hero .lead{font-size:20px;}
+  }
+
+  /* ---------- CTA BUTTON ---------- */
+  .btn{
+    display:inline-block;
+    background:var(--red);
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:0.02em;
+    padding:16px 36px;
+    border-radius:4px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover{background:#a83e2c; transform:translateY(-1px);}
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  /* ---------- STORY / NUMBER ---------- */
+  .story{
+    background:var(--cream);
+    color:var(--navy);
+  }
+  .story .grid{
+    display:grid;
+    gap:48px;
+    align-items:center;
+  }
+  @media (min-width:1200px){
+    .story .grid{grid-template-columns:1fr 1fr; gap:80px;}
+  }
+  .story .num{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:180px;
+    line-height:0.85;
+    color:var(--red);
+  }
+  .story .num span{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--navy);
+    opacity:0.6;
+    margin-top:12px;
+  }
+  .story h2{font-size:32px; margin-bottom:20px; color:var(--navy);}
+  .story p{max-width:32em; opacity:0.85;}
+  @media (min-width:1200px){
+    .story h2{font-size:40px;}
+  }
+
+  /* ---------- THE DEAL ---------- */
+  .deal{background:var(--navy);}
+  .deal .kicker{
+    font-size:12px; font-weight:600; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:16px;
+  }
+  .deal h2{font-size:32px; color:var(--cream); margin-bottom:48px; max-width:16ch;}
+  @media (min-width:1200px){ .deal h2{font-size:40px;} }
+
+  .deal-list{list-style:none; display:flex; flex-direction:column; gap:0;}
+  .deal-list li{
+    display:flex; gap:24px; align-items:baseline;
+    padding-block:28px;
+    border-top:1px solid rgba(247,243,234,0.12);
+  }
+  .deal-list li:last-child{border-bottom:1px solid rgba(247,243,234,0.12);}
+  .deal-list .n{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:32px;
+    color:var(--gold);
+    flex-shrink:0;
+    width:1.4em;
+  }
+  .deal-list .t h3{
+    font-family:'Inter',sans-serif;
+    text-transform:none;
+    font-size:18px;
+    font-weight:600;
+    color:var(--cream);
+    margin-bottom:6px;
+  }
+  .deal-list .t p{color:var(--cream); opacity:0.7; font-size:16px; max-width:38em;}
+
+  /* ---------- VISUAL PLACEHOLDER ---------- */
+  .visual-note{
+    background:var(--cream);
+    color:var(--navy);
+    text-align:center;
+  }
+  .visual-note .frame{
+    border:2px dashed rgba(15,15,15,0.25);
+    border-radius:8px;
+    padding:64px 24px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .visual-note .frame p{opacity:0.6; font-size:15px; max-width:34em; margin:0 auto;}
+  .visual-note .frame strong{display:block; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:var(--red); margin-bottom:12px;}
+
+  /* ---------- CLOSING CTA ---------- */
+  .closing{
+    background:var(--red);
+    text-align:center;
+  }
+  .closing h2{color:#fff; font-size:40px; max-width:14ch; margin:0 auto 20px;}
+  .closing p{color:#fff; opacity:0.9; max-width:32em; margin:0 auto 36px;}
+  .closing .btn{background:var(--navy);}
+  .closing .btn:hover{background:#000;}
+  @media (min-width:1200px){ .closing h2{font-size:56px;} }
+
+  footer{
+    background:var(--navy);
+    text-align:center;
+    padding-block:40px;
+  }
+  footer p{font-size:13px; color:var(--muted);}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Kappo Honda &middot; Fountain Valley</p>
+    <div class="big-num">30</div>
+    <h1>Thirty years of Kappo Honda. We're inviting a few OC creators to celebrate with us.</h1>
+    <p class="lead">Come eat, shoot what you love, and be part of the story. Dinner's on us.</p>
+    <div class="cta-row">
+      <a href="#rsvp" class="btn">Claim your invite</a>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap grid">
+    <div class="num">30<span>Years Open</span></div>
+    <div>
+      <h2>Thirty years of the same counter, the same care.</h2>
+      <p>Kappo Honda has been serving Fountain Valley since day one. This year we're marking thirty years the way we know how — good food, good company, and a handful of people who know how to tell a story with a camera.</p>
+    </div>
+  </div>
+</section>
+
+<section class="deal">
+  <div class="wrap">
+    <p class="kicker">Here's the deal</p>
+    <h2>What we're asking, and what's on us</h2>
+    <ul class="deal-list">
+      <li>
+        <span class="n">01</span>
+        <div class="t">
+          <h3>Come eat</h3>
+          <p>One visit, on a date and time we schedule with you directly. Dinner's fully covered.</p>
+        </div>
+      </li>
+      <li>
+        <span class="n">02</span>
+        <div class="t">
+          <h3>Shoot what you love</h3>
+          <p>One piece of content — a Reel or feed post, whatever fits your style. No script, no forced lines.</p>
+        </div>
+      </li>
+      <li>
+        <span class="n">03</span>
+        <div class="t">
+          <h3>Let us share it too</h3>
+          <p>With your OK, we may repost what you make on our own page as part of the 30th anniversary story.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="visual-note">
+  <div class="wrap">
+    <div class="frame">
+      <strong>Photo placeholder</strong>
+      <p>実店舗の内観・料理写真がここに入ります。Inboxに実写素材が届き次第、このセクションと og:image を差し替えます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="rsvp">
+  <div class="wrap">
+    <h2>You're one of a handful. Let's pick a night.</h2>
+    <p>Reply to this invite and tell us when works. We'll confirm your table and the rest is easy.</p>
+    <a href="#" class="btn">Claim your invite</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Kappo Honda &middot; Fountain Valley, CA &middot; 30th Anniversary Creator Invite</p>
+  </div>
+</footer>
+
+</body>
+</html>
