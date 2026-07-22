@@ -322,6 +322,48 @@
   .visual-note .frame p{opacity:0.6; font-size:15px; max-width:34em; margin:0 auto;}
   .visual-note .frame strong{display:block; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:var(--red); margin-bottom:12px;}
 
+  /* ---------- COLLAB MARQUEE ---------- */
+  .collabs{background:var(--cream); color:var(--navy); overflow:hidden;}
+  .collabs .kicker{
+    font-family:'Margest Light',sans-serif;
+    font-size:15px; font-weight:400; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--red); margin-bottom:16px;
+  }
+  .collabs h2{font-size:32px; margin-bottom:8px; color:var(--navy); max-width:20ch;}
+  .collabs .sub{opacity:0.7; max-width:34em; margin-bottom:40px;}
+  @media (min-width:1200px){ .collabs h2{font-size:40px;} }
+
+  .marquee{width:100%; overflow:hidden;}
+  .marquee-track{
+    display:flex;
+    gap:20px;
+    width:max-content;
+    animation:marquee-scroll 34s linear infinite;
+  }
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  @keyframes marquee-scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  .collab-card{flex:0 0 auto; width:150px;}
+  .collab-card img{
+    width:100%; height:auto; display:block;
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(15,15,15,0.18);
+  }
+  .collab-card .handle{
+    display:block; margin-top:10px;
+    font-family:'Margest Light',sans-serif;
+    font-size:12px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--navy);
+    opacity:0.65; text-align:center;
+  }
+  @media (min-width:1200px){ .collab-card{width:190px;} }
+  @media (prefers-reduced-motion:reduce){
+    .marquee-track{animation:none;}
+    .marquee{overflow-x:auto;}
+  }
+
   /* ---------- CLOSING CTA ---------- */
   .closing{
     background:var(--red);
@@ -400,6 +442,36 @@
     <div class="frame reveal">
       <strong>Photo placeholder</strong>
       <p>実店舗の内観・料理写真がここに入ります。Inboxに実写素材が届き次第、このセクションと og:image を差し替えます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="collabs">
+  <div class="wrap reveal">
+    <p class="kicker">Already here</p>
+    <h2>A few people who've already told our story</h2>
+    <p class="sub">Real visits, real posts, from creators who came through before you.</p>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="collab-card"><img src="images/collabs/aeadventuress.jpg" alt="Kappo Honda visit by @aeadventuress" loading="lazy" width="337" height="598"><span class="handle">@aeadventuress</span></div>
+      <div class="collab-card"><img src="images/collabs/thitkho.jpg" alt="Kappo Honda visit by @thitkho" loading="lazy" width="337" height="598"><span class="handle">@thitkho</span></div>
+      <div class="collab-card"><img src="images/collabs/feedingjon.jpg" alt="Kappo Honda visit by @feedingjon" loading="lazy" width="337" height="598"><span class="handle">@feedingjon</span></div>
+      <div class="collab-card"><img src="images/collabs/thatbrunchgal.jpg" alt="Kappo Honda visit by @thatbrunchgal" loading="lazy" width="337" height="598"><span class="handle">@thatbrunchgal</span></div>
+      <div class="collab-card"><img src="images/collabs/oc-socal-eats.jpg" alt="Kappo Honda visit by @oc.socal.eats" loading="lazy" width="337" height="598"><span class="handle">@oc.socal.eats</span></div>
+      <div class="collab-card"><img src="images/collabs/aimskees.jpg" alt="Kappo Honda visit by @aimskees" loading="lazy" width="337" height="598"><span class="handle">@aimskees</span></div>
+      <div class="collab-card"><img src="images/collabs/travis-eatz.jpg" alt="Kappo Honda visit by @travis.eatz" loading="lazy" width="337" height="598"><span class="handle">@travis.eatz</span></div>
+      <div class="collab-card"><img src="images/collabs/happyfoodietown.jpg" alt="Kappo Honda visit by @happyfoodietown" loading="lazy" width="337" height="598"><span class="handle">@happyfoodietown</span></div>
+      <div class="collab-card"><img src="images/collabs/flywiththesrys_.jpg" alt="Kappo Honda visit by @flywiththesrys_" loading="lazy" width="337" height="598"><span class="handle">@flywiththesrys_</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/aeadventuress.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@aeadventuress</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/thitkho.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@thitkho</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/feedingjon.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@feedingjon</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/thatbrunchgal.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@thatbrunchgal</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/oc-socal-eats.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@oc.socal.eats</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/aimskees.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@aimskees</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/travis-eatz.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@travis.eatz</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/happyfoodietown.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@happyfoodietown</span></div>
+      <div class="collab-card" aria-hidden="true"><img src="images/collabs/flywiththesrys_.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@flywiththesrys_</span></div>
     </div>
   </div>
 </section>
