@@ -105,6 +105,48 @@
     line-height:0.92;
     color:var(--red);
   }
+
+  /* ---------- HANKO STAMP ---------- */
+  .stamp-ring{
+    position:relative;
+    display:inline-block;
+  }
+  .stamp-ring::after{
+    content:'';
+    position:absolute;
+    inset:-10%;
+    border:3px solid var(--red);
+    border-radius:50%;
+    opacity:0;
+    pointer-events:none;
+  }
+  .stamp-ring.autoplay::after,
+  .stamp-ring.play::after{
+    animation:ring-pulse 0.7s ease-out both;
+    animation-delay:0.12s;
+  }
+  .stamp-num{
+    display:inline-block;
+    transform:rotate(-3deg);
+  }
+  .stamp-num.autoplay,
+  .stamp-num.play{
+    animation:hanko-stamp 0.55s cubic-bezier(.25,.7,.3,1) both;
+  }
+  @keyframes hanko-stamp{
+    0%{transform:scale(2.6) rotate(-16deg); opacity:0;}
+    55%{transform:scale(0.92) rotate(4deg); opacity:1;}
+    78%{transform:scale(1.05) rotate(-5deg);}
+    100%{transform:scale(1) rotate(-3deg); opacity:1;}
+  }
+  @keyframes ring-pulse{
+    0%{transform:scale(0.55); opacity:0.85;}
+    100%{transform:scale(1.4); opacity:0;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .stamp-num.autoplay, .stamp-num.play{animation:none;}
+    .stamp-ring.autoplay::after, .stamp-ring.play::after{animation:none;}
+  }
   .hero h1{
     font-size:32px;
     color:var(--cream);
@@ -166,7 +208,7 @@
   .story .num{
     display:block;
   }
-  .story .num .js-count{
+  .story .num .stamp-num{
     display:block;
     font-family:'Margest Semibold','Bebas Neue',sans-serif;
     font-size:180px;
@@ -265,7 +307,7 @@
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow">Kappo Honda &middot; Fountain Valley</p>
-    <div class="big-num js-count" data-count="30">30</div>
+    <div class="stamp-ring autoplay"><div class="big-num stamp-num autoplay">30</div></div>
     <h1>Thirty years of Kappo Honda. We're inviting a few OC creators to celebrate with us.</h1>
     <p class="lead">Come eat, shoot what you love, and be part of the story. Dinner's on us.</p>
     <div class="cta-row">
@@ -276,7 +318,7 @@
 
 <section class="story">
   <div class="wrap grid">
-    <div class="num"><span class="js-count" data-count="30">30</span><span class="label">Years Open</span></div>
+    <div class="num"><span class="stamp-ring"><span class="stamp-num">30</span></span><span class="label">Years Open</span></div>
     <div>
       <h2>Thirty years of the same counter, the same care.</h2>
       <p>Kappo Honda has been serving Fountain Valley since day one. This year we're marking thirty years the way we know how — good food, good company, and a handful of people who know how to tell a story with a camera.</p>
@@ -339,42 +381,21 @@
 
 <script>
 (function(){
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function countUp(el){
-    var target = parseInt(el.dataset.count, 10);
-    if (reduceMotion || isNaN(target)) { el.textContent = target; return; }
-    var start = null;
-    var duration = 900;
-    function step(ts){
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target);
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(step);
-  }
-
-  var heroNum = document.querySelector('.hero .js-count');
-  if (heroNum) countUp(heroNum);
-
-  var storyNum = document.querySelector('.story .js-count');
-  if (storyNum && 'IntersectionObserver' in window){
+  var storyRing = document.querySelector('.story .stamp-ring');
+  var storyNum = document.querySelector('.story .stamp-num');
+  if (storyRing && storyNum && 'IntersectionObserver' in window){
     var seen = false;
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if (entry.isIntersecting && !seen){
           seen = true;
-          countUp(storyNum);
+          storyRing.classList.add('play');
+          storyNum.classList.add('play');
           io.disconnect();
         }
       });
     }, {threshold:0.5});
     io.observe(storyNum);
-  } else if (storyNum) {
-    storyNum.textContent = storyNum.dataset.count;
   }
 })();
 </script>
