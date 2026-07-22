@@ -140,7 +140,7 @@
     justify-content:center;
     border:5px solid var(--red);
     border-radius:20px;
-    padding:6px 22px 14px;
+    padding:14px 22px;
     transform:rotate(-3deg);
     opacity:0.97;
   }
@@ -162,6 +162,7 @@
   }
   .stamp-num{
     display:block;
+    transform:translateY(0.1em); /* Margest Semibold's descender space sits low; this re-centers the visible glyph */
   }
   @keyframes hanko-drop{
     0%{transform:translateY(-70px) scale(1.35) rotate(-18deg); opacity:0;}
@@ -200,7 +201,7 @@
   .hero .cta-row{margin-top:40px;}
   @media (min-width:1200px){
     .hero .big-num{font-size:220px;}
-    .hero .stamp-ring{border-width:7px; border-radius:28px; padding:8px 32px 20px;}
+    .hero .stamp-ring{border-width:7px; border-radius:28px; padding:20px 32px;}
     .hero h1{font-size:40px; max-width:18ch;}
     .hero .lead{font-size:20px;}
   }
