@@ -66,12 +66,28 @@
 
   /* ---------- HERO ---------- */
   .hero{
+    position:relative;
     padding-block:100px 80px;
     text-align:center;
-    background:
-      radial-gradient(circle at 50% 0%, rgba(212,169,61,0.10), transparent 55%),
-      var(--navy);
+    background:var(--navy);
     border-bottom:1px solid rgba(212,169,61,0.25);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(212,169,61,0.16), transparent 55%);
+    animation:glow-breathe 6s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;}
+  @keyframes glow-breathe{
+    0%,100%{opacity:0.7; transform:scale(1);}
+    50%{opacity:1; transform:scale(1.08);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero::before{animation:none;}
   }
   .hero .eyebrow{
     font-family:'Margest Light', sans-serif;
@@ -148,12 +164,16 @@
     .story .grid{grid-template-columns:1fr 1fr; gap:80px;}
   }
   .story .num{
+    display:block;
+  }
+  .story .num .js-count{
+    display:block;
     font-family:'Margest Semibold','Bebas Neue',sans-serif;
     font-size:180px;
     line-height:0.92;
     color:var(--red);
   }
-  .story .num span{
+  .story .num .label{
     display:block;
     font-family:'Margest Light',sans-serif;
     font-size:16px;
@@ -245,7 +265,7 @@
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow">Kappo Honda &middot; Fountain Valley</p>
-    <div class="big-num">30</div>
+    <div class="big-num js-count" data-count="30">30</div>
     <h1>Thirty years of Kappo Honda. We're inviting a few OC creators to celebrate with us.</h1>
     <p class="lead">Come eat, shoot what you love, and be part of the story. Dinner's on us.</p>
     <div class="cta-row">
@@ -256,7 +276,7 @@
 
 <section class="story">
   <div class="wrap grid">
-    <div class="num">30<span>Years Open</span></div>
+    <div class="num"><span class="js-count" data-count="30">30</span><span class="label">Years Open</span></div>
     <div>
       <h2>Thirty years of the same counter, the same care.</h2>
       <p>Kappo Honda has been serving Fountain Valley since day one. This year we're marking thirty years the way we know how — good food, good company, and a handful of people who know how to tell a story with a camera.</p>
@@ -317,5 +337,46 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function countUp(el){
+    var target = parseInt(el.dataset.count, 10);
+    if (reduceMotion || isNaN(target)) { el.textContent = target; return; }
+    var start = null;
+    var duration = 900;
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+
+  var heroNum = document.querySelector('.hero .js-count');
+  if (heroNum) countUp(heroNum);
+
+  var storyNum = document.querySelector('.story .js-count');
+  if (storyNum && 'IntersectionObserver' in window){
+    var seen = false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting && !seen){
+          seen = true;
+          countUp(storyNum);
+          io.disconnect();
+        }
+      });
+    }, {threshold:0.5});
+    io.observe(storyNum);
+  } else if (storyNum) {
+    storyNum.textContent = storyNum.dataset.count;
+  }
+})();
+</script>
 </body>
 </html>
