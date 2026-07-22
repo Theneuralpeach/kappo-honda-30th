@@ -333,23 +333,36 @@
   .collabs .sub{opacity:0.7; max-width:34em; margin-bottom:40px;}
   @media (min-width:1200px){ .collabs h2{font-size:40px;} }
 
-  .marquee{width:100%; overflow:hidden;}
+  .marquee{
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    cursor:grab;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .marquee::-webkit-scrollbar{display:none;}
+  .marquee.dragging{cursor:grabbing; scroll-snap-type:none;}
   .marquee-track{
     display:flex;
     gap:20px;
     width:max-content;
-    animation:marquee-scroll 34s linear infinite;
   }
-  .marquee:hover .marquee-track{animation-play-state:paused;}
-  @keyframes marquee-scroll{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-50%);}
+  .collab-card{
+    flex:0 0 auto;
+    width:150px;
+    display:block;
+    text-decoration:none;
+    color:inherit;
   }
-  .collab-card{flex:0 0 auto; width:150px;}
   .collab-card img{
     width:100%; height:auto; display:block;
     border-radius:10px;
     box-shadow:0 8px 24px rgba(15,15,15,0.18);
+    pointer-events:none;
+    user-select:none;
+    -webkit-user-drag:none;
   }
   .collab-card .handle{
     display:block; margin-top:10px;
@@ -359,10 +372,6 @@
     opacity:0.65; text-align:center;
   }
   @media (min-width:1200px){ .collab-card{width:190px;} }
-  @media (prefers-reduced-motion:reduce){
-    .marquee-track{animation:none;}
-    .marquee{overflow-x:auto;}
-  }
 
   /* ---------- CLOSING CTA ---------- */
   .closing{
@@ -454,24 +463,24 @@
   </div>
   <div class="marquee">
     <div class="marquee-track">
-      <div class="collab-card"><img src="images/collabs/aeadventuress.jpg" alt="Kappo Honda visit by @aeadventuress" loading="lazy" width="337" height="598"><span class="handle">@aeadventuress</span></div>
-      <div class="collab-card"><img src="images/collabs/thitkho.jpg" alt="Kappo Honda visit by @thitkho" loading="lazy" width="337" height="598"><span class="handle">@thitkho</span></div>
-      <div class="collab-card"><img src="images/collabs/feedingjon.jpg" alt="Kappo Honda visit by @feedingjon" loading="lazy" width="337" height="598"><span class="handle">@feedingjon</span></div>
-      <div class="collab-card"><img src="images/collabs/thatbrunchgal.jpg" alt="Kappo Honda visit by @thatbrunchgal" loading="lazy" width="337" height="598"><span class="handle">@thatbrunchgal</span></div>
-      <div class="collab-card"><img src="images/collabs/oc-socal-eats.jpg" alt="Kappo Honda visit by @oc.socal.eats" loading="lazy" width="337" height="598"><span class="handle">@oc.socal.eats</span></div>
-      <div class="collab-card"><img src="images/collabs/aimskees.jpg" alt="Kappo Honda visit by @aimskees" loading="lazy" width="337" height="598"><span class="handle">@aimskees</span></div>
-      <div class="collab-card"><img src="images/collabs/travis-eatz.jpg" alt="Kappo Honda visit by @travis.eatz" loading="lazy" width="337" height="598"><span class="handle">@travis.eatz</span></div>
-      <div class="collab-card"><img src="images/collabs/happyfoodietown.jpg" alt="Kappo Honda visit by @happyfoodietown" loading="lazy" width="337" height="598"><span class="handle">@happyfoodietown</span></div>
-      <div class="collab-card"><img src="images/collabs/flywiththesrys_.jpg" alt="Kappo Honda visit by @flywiththesrys_" loading="lazy" width="337" height="598"><span class="handle">@flywiththesrys_</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/aeadventuress.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@aeadventuress</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/thitkho.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@thitkho</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/feedingjon.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@feedingjon</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/thatbrunchgal.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@thatbrunchgal</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/oc-socal-eats.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@oc.socal.eats</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/aimskees.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@aimskees</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/travis-eatz.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@travis.eatz</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/happyfoodietown.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@happyfoodietown</span></div>
-      <div class="collab-card" aria-hidden="true"><img src="images/collabs/flywiththesrys_.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@flywiththesrys_</span></div>
+      <a class="collab-card" href="https://www.instagram.com/p/DaRW3mfJhYP/" target="_blank" rel="noopener"><img src="images/collabs/aeadventuress.jpg" alt="Kappo Honda visit by @aeadventuress" loading="lazy" width="337" height="598"><span class="handle">@aeadventuress</span></a>
+      <a class="collab-card" href="https://www.instagram.com/p/DZtfHTLRol1/" target="_blank" rel="noopener"><img src="images/collabs/thitkho.jpg" alt="Kappo Honda visit by @thitkho" loading="lazy" width="337" height="598"><span class="handle">@thitkho</span></a>
+      <a class="collab-card" href="https://www.instagram.com/p/DWo6F4ciWGy/" target="_blank" rel="noopener"><img src="images/collabs/feedingjon.jpg" alt="Kappo Honda visit by @feedingjon" loading="lazy" width="337" height="598"><span class="handle">@feedingjon</span></a>
+      <a class="collab-card" href="https://www.instagram.com/p/DO320Ibjbpe/" target="_blank" rel="noopener"><img src="images/collabs/thatbrunchgal.jpg" alt="Kappo Honda visit by @thatbrunchgal" loading="lazy" width="337" height="598"><span class="handle">@thatbrunchgal</span></a>
+      <a class="collab-card" href="https://www.instagram.com/p/DY0XyFCP1ab/" target="_blank" rel="noopener"><img src="images/collabs/oc-socal-eats.jpg" alt="Kappo Honda visit by @oc.socal.eats" loading="lazy" width="337" height="598"><span class="handle">@oc.socal.eats</span></a>
+      <a class="collab-card" href="https://www.instagram.com/p/DQkcYfskvZU/" target="_blank" rel="noopener"><img src="images/collabs/aimskees.jpg" alt="Kappo Honda visit by @aimskees" loading="lazy" width="337" height="598"><span class="handle">@aimskees</span></a>
+      <a class="collab-card" href="https://www.instagram.com/p/DAubTTmv_p5/" target="_blank" rel="noopener"><img src="images/collabs/travis-eatz.jpg" alt="Kappo Honda visit by @travis.eatz" loading="lazy" width="337" height="598"><span class="handle">@travis.eatz</span></a>
+      <a class="collab-card" href="https://www.instagram.com/p/DNv7a7l5AaS/" target="_blank" rel="noopener"><img src="images/collabs/happyfoodietown.jpg" alt="Kappo Honda visit by @happyfoodietown" loading="lazy" width="337" height="598"><span class="handle">@happyfoodietown</span></a>
+      <a class="collab-card" href="https://www.instagram.com/p/C5HhPvEPTf1/" target="_blank" rel="noopener"><img src="images/collabs/flywiththesrys_.jpg" alt="Kappo Honda visit by @flywiththesrys_" loading="lazy" width="337" height="598"><span class="handle">@flywiththesrys_</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/DaRW3mfJhYP/" target="_blank" rel="noopener"><img src="images/collabs/aeadventuress.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@aeadventuress</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/DZtfHTLRol1/" target="_blank" rel="noopener"><img src="images/collabs/thitkho.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@thitkho</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/DWo6F4ciWGy/" target="_blank" rel="noopener"><img src="images/collabs/feedingjon.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@feedingjon</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/DO320Ibjbpe/" target="_blank" rel="noopener"><img src="images/collabs/thatbrunchgal.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@thatbrunchgal</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/DY0XyFCP1ab/" target="_blank" rel="noopener"><img src="images/collabs/oc-socal-eats.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@oc.socal.eats</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/DQkcYfskvZU/" target="_blank" rel="noopener"><img src="images/collabs/aimskees.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@aimskees</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/DAubTTmv_p5/" target="_blank" rel="noopener"><img src="images/collabs/travis-eatz.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@travis.eatz</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/DNv7a7l5AaS/" target="_blank" rel="noopener"><img src="images/collabs/happyfoodietown.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@happyfoodietown</span></a>
+      <a class="collab-card" aria-hidden="true" tabindex="-1" href="https://www.instagram.com/p/C5HhPvEPTf1/" target="_blank" rel="noopener"><img src="images/collabs/flywiththesrys_.jpg" alt="" loading="lazy" width="337" height="598"><span class="handle">@flywiththesrys_</span></a>
     </div>
   </div>
 </section>
@@ -526,6 +535,77 @@
     revealEls.forEach(function(el){ revealIO.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // collab marquee — auto-scrolls, but manual scroll/drag/click always wins
+  var marquee = document.querySelector('.marquee');
+  var track = document.querySelector('.marquee-track');
+  if (marquee && track){
+    var halfWidth = 0;
+    function measureMarquee(){ halfWidth = track.scrollWidth / 2; }
+    measureMarquee();
+    window.addEventListener('resize', measureMarquee);
+
+    var paused = false;
+    var resumeTimer = null;
+    function pauseFor(ms){
+      paused = true;
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(function(){ paused = false; }, ms);
+    }
+
+    if (!reduceMotion){
+      (function tick(){
+        if (!paused && halfWidth > 0){
+          marquee.scrollLeft += 0.5;
+          if (marquee.scrollLeft >= halfWidth){
+            marquee.scrollLeft -= halfWidth;
+          }
+        }
+        requestAnimationFrame(tick);
+      })();
+    }
+
+    // trackpad / mouse wheel, including vertical wheels on a horizontal strip
+    marquee.addEventListener('wheel', function(e){
+      var delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      marquee.scrollLeft += delta;
+      pauseFor(1500);
+      e.preventDefault();
+    }, {passive:false});
+
+    // native touch scroll just needs a pause window
+    marquee.addEventListener('touchstart', function(){ pauseFor(4000); }, {passive:true});
+
+    // mouse drag-to-scroll, with click-vs-drag distinction so links still work
+    var dragging = false, dragMoved = false, startX = 0, startScroll = 0;
+    marquee.addEventListener('pointerdown', function(e){
+      if (e.pointerType !== 'mouse') return;
+      dragging = true; dragMoved = false;
+      startX = e.clientX;
+      startScroll = marquee.scrollLeft;
+      marquee.classList.add('dragging');
+      pauseFor(4000);
+    });
+    marquee.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 5) dragMoved = true;
+      marquee.scrollLeft = startScroll - dx;
+    });
+    function endDrag(){
+      if (!dragging) return;
+      dragging = false;
+      marquee.classList.remove('dragging');
+      pauseFor(1200);
+    }
+    marquee.addEventListener('pointerup', endDrag);
+    marquee.addEventListener('pointerleave', endDrag);
+    track.querySelectorAll('a.collab-card').forEach(function(a){
+      a.addEventListener('click', function(e){
+        if (dragMoved) e.preventDefault();
+      });
+    });
   }
 
   // light parallax on the story "30" — moves slightly slower than the page
